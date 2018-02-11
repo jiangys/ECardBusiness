@@ -42,6 +42,11 @@
 		8EAE8171202DFF6C00D06854 /* ECBalanceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE8170202DFF6C00D06854 /* ECBalanceDetailViewController.m */; };
 		8EAE8174202E8A7400D06854 /* ECOpenTimeUpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE8173202E8A7400D06854 /* ECOpenTimeUpdateModel.m */; };
 		8EAE8177202ECF7100D06854 /* ECOpenTimeItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE8176202ECF7100D06854 /* ECOpenTimeItemView.m */; };
+		8ECC929C20303DD4004F7AFC /* YSCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC929B20303DD3004F7AFC /* YSCryptor.m */; };
+		8ECC929F20304FBB004F7AFC /* ECBalanceDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC929E20304FBB004F7AFC /* ECBalanceDealViewController.m */; };
+		8ECC92A22030501D004F7AFC /* ECBalanceFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC92A12030501D004F7AFC /* ECBalanceFinishViewController.m */; };
+		8ECC92A520305058004F7AFC /* ECBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC92A420305058004F7AFC /* ECBalanceCell.m */; };
+		8ECC92A820305EFA004F7AFC /* ECBalanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC92A720305EFA004F7AFC /* ECBalanceModel.m */; };
 		8EDE83D1201B8E4200E16817 /* UINavigationBar+Transparent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE83CF201B8E4200E16817 /* UINavigationBar+Transparent.m */; };
 		8EDE83D4201B8E6800E16817 /* UIViewController+navigatinSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE83D3201B8E6800E16817 /* UIViewController+navigatinSetting.m */; };
 		8EE6F98C20293807009F385A /* ECConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6F98B20293807009F385A /* ECConfigModel.m */; };
@@ -52,7 +57,6 @@
 		8EF404FD2029FD5300B6EDE2 /* ECAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF404FC2029FD5300B6EDE2 /* ECAddressModel.m */; };
 		8EF40500202A8C7F00B6EDE2 /* ECPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF404FF202A8C7F00B6EDE2 /* ECPhoneViewController.m */; };
 		8EF40503202A8D1600B6EDE2 /* ECAddressPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF40502202A8D1600B6EDE2 /* ECAddressPhoneCell.m */; };
-		8EFA6AD220220179007454BF /* YSCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA6AD020220179007454BF /* YSCryptor.m */; };
 		8EFA6AD5202206D1007454BF /* ECBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA6AD4202206D1007454BF /* ECBalanceViewController.m */; };
 		8EFA6AE12022A641007454BF /* ECRegisterNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA6AD82022A641007454BF /* ECRegisterNextViewController.m */; };
 		8EFA6AE22022A641007454BF /* ECBindCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA6AD92022A641007454BF /* ECBindCardViewController.m */; };
@@ -166,6 +170,16 @@
 		8EAE8173202E8A7400D06854 /* ECOpenTimeUpdateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECOpenTimeUpdateModel.m; sourceTree = "<group>"; };
 		8EAE8175202ECF7100D06854 /* ECOpenTimeItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECOpenTimeItemView.h; sourceTree = "<group>"; };
 		8EAE8176202ECF7100D06854 /* ECOpenTimeItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECOpenTimeItemView.m; sourceTree = "<group>"; };
+		8ECC929A20303DD3004F7AFC /* YSCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCryptor.h; sourceTree = "<group>"; };
+		8ECC929B20303DD3004F7AFC /* YSCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCryptor.m; sourceTree = "<group>"; };
+		8ECC929D20304FBB004F7AFC /* ECBalanceDealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceDealViewController.h; sourceTree = "<group>"; };
+		8ECC929E20304FBB004F7AFC /* ECBalanceDealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceDealViewController.m; sourceTree = "<group>"; };
+		8ECC92A02030501D004F7AFC /* ECBalanceFinishViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceFinishViewController.h; sourceTree = "<group>"; };
+		8ECC92A12030501D004F7AFC /* ECBalanceFinishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceFinishViewController.m; sourceTree = "<group>"; };
+		8ECC92A320305058004F7AFC /* ECBalanceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceCell.h; sourceTree = "<group>"; };
+		8ECC92A420305058004F7AFC /* ECBalanceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceCell.m; sourceTree = "<group>"; };
+		8ECC92A620305EFA004F7AFC /* ECBalanceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceModel.h; sourceTree = "<group>"; };
+		8ECC92A720305EFA004F7AFC /* ECBalanceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceModel.m; sourceTree = "<group>"; };
 		8EDE83CF201B8E4200E16817 /* UINavigationBar+Transparent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Transparent.m"; sourceTree = "<group>"; };
 		8EDE83D0201B8E4200E16817 /* UINavigationBar+Transparent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Transparent.h"; sourceTree = "<group>"; };
 		8EDE83D2201B8E6800E16817 /* UIViewController+navigatinSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+navigatinSetting.h"; sourceTree = "<group>"; };
@@ -186,8 +200,6 @@
 		8EF404FF202A8C7F00B6EDE2 /* ECPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECPhoneViewController.m; sourceTree = "<group>"; };
 		8EF40501202A8D1600B6EDE2 /* ECAddressPhoneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECAddressPhoneCell.h; sourceTree = "<group>"; };
 		8EF40502202A8D1600B6EDE2 /* ECAddressPhoneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECAddressPhoneCell.m; sourceTree = "<group>"; };
-		8EFA6AD020220179007454BF /* YSCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YSCryptor.m; path = "../../../../../../../../../Downloads/YSKit-master/YSKit/YSKit/YSCryptor.m"; sourceTree = "<group>"; };
-		8EFA6AD120220179007454BF /* YSCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YSCryptor.h; path = "../../../../../../../../../Downloads/YSKit-master/YSKit/YSKit/YSCryptor.h"; sourceTree = "<group>"; };
 		8EFA6AD3202206D1007454BF /* ECBalanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceViewController.h; sourceTree = "<group>"; };
 		8EFA6AD4202206D1007454BF /* ECBalanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceViewController.m; sourceTree = "<group>"; };
 		8EFA6AD72022A641007454BF /* ECForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECForgetPwdViewController.h; sourceTree = "<group>"; };
@@ -498,18 +510,10 @@
 			children = (
 				8E3531DA201C4DD6005622C2 /* Setting */,
 				F62F3B7E200F935B00729FAF /* Login */,
-				F60BD64A200C583100050F3A /* Balance */,
 				F60BD64B200C583100050F3A /* Home */,
 				F60BD651200C583100050F3A /* Main */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		F60BD64A200C583100050F3A /* Balance */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Balance;
 			sourceTree = "<group>";
 		};
 		F60BD64B200C583100050F3A /* Home */ = {
@@ -535,6 +539,10 @@
 				8EFA6AD4202206D1007454BF /* ECBalanceViewController.m */,
 				8EAE816F202DFF6C00D06854 /* ECBalanceDetailViewController.h */,
 				8EAE8170202DFF6C00D06854 /* ECBalanceDetailViewController.m */,
+				8ECC929D20304FBB004F7AFC /* ECBalanceDealViewController.h */,
+				8ECC929E20304FBB004F7AFC /* ECBalanceDealViewController.m */,
+				8ECC92A02030501D004F7AFC /* ECBalanceFinishViewController.h */,
+				8ECC92A12030501D004F7AFC /* ECBalanceFinishViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -542,6 +550,8 @@
 		F60BD64F200C583100050F3A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8ECC92A620305EFA004F7AFC /* ECBalanceModel.h */,
+				8ECC92A720305EFA004F7AFC /* ECBalanceModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -549,6 +559,8 @@
 		F60BD650200C583100050F3A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8ECC92A320305058004F7AFC /* ECBalanceCell.h */,
+				8ECC92A420305058004F7AFC /* ECBalanceCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,8 +720,8 @@
 		F6A588A92013078D00BE7EA8 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				8EFA6AD120220179007454BF /* YSCryptor.h */,
-				8EFA6AD020220179007454BF /* YSCryptor.m */,
+				8ECC929A20303DD3004F7AFC /* YSCryptor.h */,
+				8ECC929B20303DD3004F7AFC /* YSCryptor.m */,
 				F6A588D22014C0F500BE7EA8 /* Foundation+Log.m */,
 				F6A588AA201307A300BE7EA8 /* ECAccountTool.h */,
 				F6A588AB201307A300BE7EA8 /* ECAccountTool.m */,
@@ -929,7 +941,6 @@
 				8EE6F98C20293807009F385A /* ECConfigModel.m in Sources */,
 				8E3531FB201C5FFB005622C2 /* YSMineCellItemSwitch.m in Sources */,
 				8E5C4BBB2020C69E003EB5ED /* ECCashDeskViewController.m in Sources */,
-				8EFA6AD220220179007454BF /* YSCryptor.m in Sources */,
 				8EA9BC3B202BDDB700B4801D /* ECOpeningOptionModel.m in Sources */,
 				F683457920124BCF00816A7A /* ECOpeningTimeView.m in Sources */,
 				F60BD668200C583100050F3A /* NSString+ECUtil.m in Sources */,
@@ -945,8 +956,10 @@
 				8EFA6AE12022A641007454BF /* ECRegisterNextViewController.m in Sources */,
 				8E3531FF201C5FFB005622C2 /* YSMineViewController.m in Sources */,
 				8EA9BC32202B5DD700B4801D /* ECOpeningTimeEditViewController.m in Sources */,
+				8ECC92A820305EFA004F7AFC /* ECBalanceModel.m in Sources */,
 				F683457620123ED400816A7A /* BRTextField.m in Sources */,
 				F62F3B8A200FAF4600729FAF /* ECRegisterModel.m in Sources */,
+				8ECC929F20304FBB004F7AFC /* ECBalanceDealViewController.m in Sources */,
 				8EFA9C12202CB0F4006500D8 /* ECSafeViewController.m in Sources */,
 				8EFA9C18202CB11E006500D8 /* ECHelpViewController.m in Sources */,
 				8EDE83D1201B8E4200E16817 /* UINavigationBar+Transparent.m in Sources */,
@@ -956,8 +969,10 @@
 				8EA9BC41202BDF9700B4801D /* ECOpeningTimeItemModel.m in Sources */,
 				F6A588CD20142B5A00BE7EA8 /* BRDatePickerView.m in Sources */,
 				F6A588C920142B5A00BE7EA8 /* BRAddressModel.m in Sources */,
+				8ECC92A520305058004F7AFC /* ECBalanceCell.m in Sources */,
 				8E3531FC201C5FFB005622C2 /* YSBadgeView.m in Sources */,
 				F6A588CC20142B5A00BE7EA8 /* BRBaseView.m in Sources */,
+				8ECC92A22030501D004F7AFC /* ECBalanceFinishViewController.m in Sources */,
 				8EFA6AE42022A641007454BF /* ECLoginViewController.m in Sources */,
 				F64876502012F2D300BD653C /* ECLoginService.m in Sources */,
 				8EA9BC38202BDBF300B4801D /* ECOpeningModel.m in Sources */,
@@ -975,6 +990,7 @@
 				8E3531F8201C5FFB005622C2 /* YSMineCellItemLabel.m in Sources */,
 				8E35320C201CC8E3005622C2 /* ECAddressViewController.m in Sources */,
 				F6A588D32014C0F500BE7EA8 /* Foundation+Log.m in Sources */,
+				8ECC929C20303DD4004F7AFC /* YSCryptor.m in Sources */,
 				8EF404FD2029FD5300B6EDE2 /* ECAddressModel.m in Sources */,
 				8EFA6AE22022A641007454BF /* ECBindCardViewController.m in Sources */,
 				8EDE83D4201B8E6800E16817 /* UIViewController+navigatinSetting.m in Sources */,
@@ -1109,7 +1125,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9JUFWD63X6;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/ECardBusiness-Prefix.pch";
 				INFOPLIST_FILE = ECardBusiness/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1127,7 +1143,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9JUFWD63X6;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/ECardBusiness-Prefix.pch";
 				INFOPLIST_FILE = ECardBusiness/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.view.backgroundColor = UIColorFromHex(0x577CE1);
+    
     
 }
 
