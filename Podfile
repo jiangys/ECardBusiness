@@ -18,4 +18,5 @@ target :ECardBusiness do
  pod 'LCActionSheet', '~> 3.4.0'
  pod 'LBXScan', '~> 2.3'
  pod 'IQKeyboardManager' #iOS8 and later
+ pod 'FCUUID', '~> 1.3.1'
 end

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ECBalanceBillModel.h"
 
 @interface ECBalanceCell : UITableViewCell
-@property(nonatomic, strong) ECAddressModel *addressModel;
+@property(nonatomic, strong) ECBalanceBillModel *balanceModel;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @end

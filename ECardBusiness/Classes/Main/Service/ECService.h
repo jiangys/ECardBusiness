@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ECUserInfoModel.h"
+#import "ECUserAccountModel.h"
 
 @interface ECService : NSObject
 
@@ -20,5 +21,14 @@
 + (void)getUserInfo:(NSString *)userId
             success:(void (^)(ECUserInfoModel *userModel))success
             failure:(void (^)(NSString *errorMsg))failure;
+
++ (void)getAccountWithSuccess:(void (^)(ECUserAccountModel *responseObj))success
+                      failure:(void (^)(NSString *errorMsg))failure;
+
++ (void)submitWithdrawWithPaySecret:(NSString *)paySecret
+                   foundingSourceId:(NSString *)foundingSourceId
+                            success:(void (^)(id responseObj))success
+                     paySecretBlock:(void (^)(void))paySecretBlock
+                            failure:(void (^)(NSString *errorMsg))failure;
 
 @end

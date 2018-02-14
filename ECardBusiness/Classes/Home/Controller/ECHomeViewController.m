@@ -17,6 +17,8 @@
 #import "ECNavigationController.h"
 #import "ECService.h"
 #import "ECConfigModel.h"
+#import "ECBalanceDealViewController.h"
+#import "ECBalanceDetailViewController.h"
 
 #define kHomeHeaderViewHeight 360
 @interface ECHomeViewController ()
@@ -112,6 +114,9 @@
     
     UIView *balanceItemView = [self setupButtonWithPoint:(CGPoint){SCREEN_WIDTH - 60 - 70, lineView.bottom + 25} imageName:@"home_balanceItem" desc:@"账目明细" block:^{
         ECLog(@"账目明细");
+        @strongify(self);
+        ECBalanceDetailViewController *balanceVC = [[ECBalanceDetailViewController alloc] init];
+        [self.navigationController pushViewController:balanceVC animated:YES];
     }];
     [headerView addSubview:balanceItemView];
 }

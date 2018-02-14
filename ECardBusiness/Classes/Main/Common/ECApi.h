@@ -7,9 +7,12 @@
 //
 
 #pragma mark - 常量定义
-//static NSString *const ECMacro_Api = @"http://34.236.73.23";
-static NSString *const ECMacro_Api = @"http://api.ecard";
+static NSString *const ECMacro_Api = @"http://34.236.73.23";
+//static NSString *const ECMacro_Api = @"http://api.ecard";
 static NSString *const web_add_bandcard = @"http://dwolla.ecard/dwolla_iav.html?t="; //打开增加银行卡页面
+
+static NSString *const api_home_account = @"/userOperation/getUserAccount.do"; // 获取用户账户信息
+static NSString *const api_home_withdraw = @"/userOperation/submitWithdraw.do"; //账户余额提现银行卡
 
 static NSString *const api_login = @"/merchantAuth/merchantLoginByEmailWithPassword.do"; // 邮箱+密码登录
 static NSString *const api_login_Code = @"/merchantAuth/merchantLoginByEmailWithCode.do"; // 邮箱+验证码登录
@@ -31,3 +34,4 @@ static NSString *const api_user_updateOpenTime = @"/merchantOperation/updateOpen
 static NSString *const api_user_updateContact = @"/merchantOperation/updateContact.do"; // post 更新地址(商铺)联系电话
 static NSString *const api_user_queryMerchantStore = @"/merchantOperation/queryMerchantStoreByUserId.do"; // get 获取商家商铺列表
 static NSString *const api_user_updateAvatar = @"/userOperation/updateUserAvatarUrl.do"; // get 更新头像
+

@@ -49,7 +49,7 @@
                      success:(void (^)(ECAddressModel *model))success
                      failure:(void (^)(NSString *errorMsg))failure {
     NSDictionary *param = addressModel.mj_keyValues;
-    [ECHttpRequest postWithURLString:api_user_addressSave param:param resultClass:nil success:^(id responseObj) {
+    [ECHttpRequest postWithURLString:api_user_addressSave param:param resultClass:nil isContentTypeJson:YES success:^(id responseObj) {
         success(nil);
     } failure:failure];
 }

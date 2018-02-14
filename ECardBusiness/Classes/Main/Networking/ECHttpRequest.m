@@ -107,6 +107,29 @@
 
 + (void)postWithURLString:(NSString *)url
                     param:(id)params
+        isContentTypeJson:(BOOL)isContentTypeJson
+                  success:(void (^)(id responseObj))success
+                  failure:(void (^)(NSError * error))failure {
+    NSMutableDictionary *dictParams = [self requestParams:params];
+    NSString *handleUrl = [NSString stringWithFormat:@"%@%@",ECMacro_Api,url];
+    ECLog(@"\n请求链接地址---> %@",handleUrl);
+    ECLog(@"\n请求Session---> %@",[ECAccountTool getAccount].session);
+    [self postWithURLString:handleUrl isContentTypeJson:isContentTypeJson params:dictParams success:^(id responseObj) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObj options:kNilOptions error:nil];
+        ECLog(@"请求成功，返回数据 : %@",dict);
+        if (success) {
+            success(dict);
+        }
+    } failure:^(NSError *error) {
+        ECLog(@"请求失败 : %@",error);
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
++ (void)postWithURLString:(NSString *)url
+                    param:(id)params
               resultClass:(Class)resultClass
                   success:(void (^)(id responseObj))success
                   failure:(void (^)(NSString *error))failure {

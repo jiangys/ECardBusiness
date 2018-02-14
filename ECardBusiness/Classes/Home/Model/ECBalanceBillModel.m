@@ -6,8 +6,8 @@
 //  Copyright © 2018年 bige. All rights reserved.
 //
 
-#import "ECBalanceModel.h"
+#import "ECBalanceBillModel.h"
 
-@implementation ECBalanceModel
+@implementation ECBalanceBillModel
 
 @end

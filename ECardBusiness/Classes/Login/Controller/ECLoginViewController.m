@@ -87,7 +87,7 @@
             return;
         }
         
-        [MBProgressHUD showMessage:@"登录中，请稍后"];
+        [MBProgressHUD showMessage:@"loading"];
         [ECLoginService loginWithEmail:self.emailTextField.text pwd:self.passwordTextField.text success:^(ECAccountModel *responseObj) {
             @strongify(self);
             [MBProgressHUD hideHUD];

@@ -29,6 +29,8 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - FCUUID (1.3.1):
+    - UICKeyChainStore (~> 2.1.0)
   - IQKeyboardManager (5.0.7)
   - JVFloatLabeledTextField (1.2.1)
   - LBXScan (2.3):
@@ -46,12 +48,14 @@ PODS:
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
+  - UICKeyChainStore (2.1.1)
   - WebViewJavascriptBridge (6.0.3)
   - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - BlocksKit (~> 2.2.5)
+  - FCUUID (~> 1.3.1)
   - IQKeyboardManager
   - JVFloatLabeledTextField (~> 1.2.1)
   - LBXScan (~> 2.3)
@@ -66,6 +70,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
   IQKeyboardManager: 0bfa4607d39924116b5c0c8b55b5d789288b5cba
   JVFloatLabeledTextField: cfc44e3c4d493b2ed92ede8035e8e89c2912ba64
   LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
@@ -75,9 +80,10 @@ SPEC CHECKSUMS:
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
+  UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 717a7453c47d070313e2c1a9e55d13bdbf2fbfde
+PODFILE CHECKSUM: 0be062dd8c6f858d98cac8db1a2e31b0833d6698
 
 COCOAPODS: 1.4.0

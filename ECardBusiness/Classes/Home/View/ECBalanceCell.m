@@ -8,138 +8,102 @@
 
 #import "ECBalanceCell.h"
 
-@implementation ECBalanceCell
+@interface ECBalanceCell()
 
-@property(nonatomic, weak) UILabel *addressLabel; // 详细地址
-@property(nonatomic, weak) UILabel *addressTitle;
-@property(nonatomic, weak) UIImageView *addressImageView;
-@property(nonatomic, weak) UIView *lineView;
-@property(nonatomic, weak) UILabel *phoneLabel;
-@property(nonatomic, weak) UILabel *phoneTitle;
-@property(nonatomic, weak) UIImageView *phoneImageView;
-@property(nonatomic, weak) UIButton *saveButton;
+/** 账户类型    number    1-balance 2-cashback */
+//@property (nonatomic, copy) NSString *accountType;
+///** 金额 */
+//@property (nonatomic, copy) NSString *amount;
+///** 返现比例    number    当accountType=2 && transactionType=201时有效 */
+//@property (nonatomic, copy) NSString *cashbackRate;
+///** 头像url */
+//@property (nonatomic, copy) NSString *avatarUrl;
+///** 明细id */
+//@property (nonatomic, copy) NSString *journlId;
+///** 头像对应名称 */
+//@property (nonatomic, copy) NSString *name;
+///** 交易状态 number    1-处理中 2-待处理 3-成功 4-失败 5-取消 6-拒绝 */
+//@property (nonatomic, copy) NSString *status;
+///** 交易发生时间 */
+//@property (nonatomic, copy) NSString *submitTime;
+///**  交易类型    number    101-余额充值 102-余额提现 201-支付支出 202-支付收入 301-返现兑换 */
+//@property (nonatomic, copy) NSString *transactionType;
 
-@property (nonatomic, copy) void(^eventTouchUpInsideHandler)(void);
+@property(nonatomic, strong) UIImageView *avatarImageView; // 详细地址
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *submitTimeLabel;
+@property (nonatomic, strong) UILabel *amountLabel;
+@property (nonatomic, strong) UILabel *nameDescLabel;
 @end
 
-@implementation ECAddressPhoneCell
+@implementation ECBalanceCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = UIColorFromHex(0xffffff);
-        
+
         UIImageView *iconImageView = [[UIImageView alloc] init];
-        iconImageView.image = [UIImage imageNamed:@"setting_address"];
+        iconImageView.contentMode = UIViewContentModeScaleToFill;
+        iconImageView.layer.masksToBounds = YES;
+        iconImageView.layer.cornerRadius = 40 * 0.5;
         [self.contentView addSubview:iconImageView];
-        self.addressImageView = iconImageView;
-        
-        UILabel *addressTitle = [[UILabel alloc] init];
-        addressTitle.textColor = UIColorMain_Gray;
-        addressTitle.font = [UIFont systemFontOfSize:16];
-        [self.contentView addSubview:addressTitle];
-        self.addressTitle = addressTitle;
-        
-        // 详细地址
-        UILabel *addressLabel = [[UILabel alloc] init];
-        addressLabel.textColor = UIColorMain_Normal;
-        addressLabel.font = [UIFont systemFontOfSize:14];
-        addressLabel.numberOfLines = 2;
-        addressLabel.textAlignment = NSTextAlignmentRight;
-        [self.contentView addSubview:addressLabel];
-        self.addressLabel = addressLabel;
-        
-        // 地址栏与编辑栏 分割线
-        UIView *lineView = [[UIView alloc] init];
-        lineView.backgroundColor = UIColorMain_line;
-        [self.contentView addSubview:lineView];
-        self.lineView = lineView;
-        
-        UIImageView *phoneImageView = [[UIImageView alloc] init];
-        phoneImageView.image = [UIImage imageNamed:@"setting_address"];
-        [self.contentView addSubview:phoneImageView];
-        self.phoneImageView = phoneImageView;
-        
-        UILabel *phoneTitle = [[UILabel alloc] init];
-        phoneTitle.textColor = UIColorMain_Normal;
-        phoneTitle.font = [UIFont systemFontOfSize:16];
-        [self.contentView addSubview:phoneTitle];
-        self.phoneTitle = phoneTitle;
-        
-        UILabel *phoneLabel = [[UILabel alloc] init];
-        phoneLabel.textColor = UIColorMain_Normal;
-        phoneLabel.font = [UIFont systemFontOfSize:14];
-        phoneLabel.textAlignment = NSTextAlignmentRight;
-        [self.contentView addSubview:phoneLabel];
-        self.phoneLabel = phoneLabel;
-        
-        UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        saveButton.titleLabel.font = [UIFont systemFontOfSize:14];
-        [saveButton setTitle:@"添加电话号码" forState:UIControlStateNormal];
-        [saveButton setTitleColor:UIColorMain_Highlighted forState:UIControlStateNormal];
-        saveButton.layer.borderColor = UIColorMain_Highlighted.CGColor;
-        saveButton.layer.borderWidth = 1.f;
-        saveButton.layer.masksToBounds = YES;
-        saveButton.layer.cornerRadius = 3.f;
-        [self.contentView addSubview:saveButton];
-        self.saveButton = saveButton;
-        @weakify(self);
-        [saveButton bk_addEventHandler:^(id sender) {
-            @strongify(self)
-            if (self.eventTouchUpInsideHandler) {
-                self.eventTouchUpInsideHandler();
-            }
-        } forControlEvents:UIControlEventTouchUpInside];
+        self.avatarImageView = iconImageView;
+
+        UILabel *nameLabel = [[UILabel alloc] init];
+        nameLabel.textColor = UIColorMain_Gray;
+        nameLabel.font = [UIFont systemFontOfSize:16];
+        [self.contentView addSubview:nameLabel];
+        self.nameLabel = nameLabel;
+
+        UILabel *nameDescLabel = [[UILabel alloc] init];
+        nameDescLabel.textColor = UIColorMain_Normal;
+        nameDescLabel.font = [UIFont systemFontOfSize:13];
+        nameDescLabel.textAlignment = NSTextAlignmentRight;
+        [self.contentView addSubview:nameDescLabel];
+        self.nameDescLabel = nameDescLabel;
+
+        UILabel *submitTimeLabel = [[UILabel alloc] init];
+        submitTimeLabel.textColor = UIColorFromHex(0x999999);
+        submitTimeLabel.font = [UIFont systemFontOfSize:12];
+        [self.contentView addSubview:submitTimeLabel];
+        self.submitTimeLabel = submitTimeLabel;
+
+        UILabel *amountLabel = [[UILabel alloc] init];
+        amountLabel.textColor = UIColorFromHex(0xff3f56);
+        amountLabel.font = [UIFont systemFontOfSize:15];
+        [self.contentView addSubview:amountLabel];
+        self.amountLabel = amountLabel;
     }
     return self;
 }
 
-- (void)setAddressModel:(ECAddressModel *)addressModel {
-    CGFloat padding = 16;
+- (void)setBalanceModel:(ECBalanceBillModel *)balanceModel {
+    [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:balanceModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"home_header_default_icon"]];
+    _avatarImageView.frame = CGRectMake(15, 20, 40, 40);
     
-    self.addressImageView.frame = CGRectMake(padding, 22, 16, 16);
-    self.addressTitle.text = [NSString stringWithFormat:@"地址%@",addressModel.addressNo];
-    self.addressTitle.frame = CGRectMake(self.addressImageView.right + 10, 20, 100, 20);
+    _nameLabel.text = @"Starbucks";
+    CGSize nameSize = [_nameLabel.text sizeMakeWithFont:_nameLabel.font];
+    _nameLabel.frame = CGRectMake(_avatarImageView.right + 10, _avatarImageView.top, nameSize.width, nameSize.height);
     
-    // 详细地址 //@"12-54 Estates Lane, Bayside, NY, 11360";
-    NSString *detailAddress = [NSString stringWithFormat:@"%@,%@",addressModel.fullAddress, addressModel.zipCode];
-    self.addressLabel.text = detailAddress;
-    //CGSize addressLabelSize = [detailAddress sizeMakeWithFont:self.addressLabel.font constrainedToWidth:SCREEN_WIDTH - padding - 150];
-    self.addressLabel.frame = CGRectMake(150, 0, SCREEN_WIDTH - padding - 150, 80);
+    _submitTimeLabel.text = @"03-10-2017";
+    CGSize submitTimeSize = [_submitTimeLabel.text sizeMakeWithFont:_submitTimeLabel.font];
+    _submitTimeLabel.frame = CGRectMake(_nameLabel.right + 10, _avatarImageView.top + 3, submitTimeSize.width, submitTimeSize.height);
     
-    self.lineView.frame = CGRectMake(padding, 80, SCREEN_WIDTH - 2 * padding, 0.5);
+    _nameDescLabel.text = @"已充值 - 正在处理";
+    CGSize nameDescSize = [_nameDescLabel.text sizeMakeWithFont:_nameDescLabel.font];
+    _nameDescLabel.frame = CGRectMake(_avatarImageView.right + 10, _nameLabel.bottom + 8, nameDescSize.width, nameDescSize.height);
     
-    if (addressModel.contact.length > 0) {
-        self.phoneImageView.hidden = NO;
-        self.phoneLabel.hidden = NO;
-        self.phoneTitle.hidden = NO;
-        self.saveButton.hidden = YES;
-        
-        self.phoneImageView.frame = CGRectMake(padding, self.lineView.bottom + 22, 16, 16);
-        self.phoneTitle.text = [NSString stringWithFormat:@"电话%@",addressModel.addressNo];
-        self.phoneTitle.frame = CGRectMake(self.phoneImageView.right + 10, self.phoneImageView.top, 100, 20);
-        
-        self.phoneLabel.text = addressModel.contact;
-        self.phoneLabel.frame = CGRectMake(self.addressLabel.left, self.lineView.bottom, SCREEN_WIDTH - padding - 150, 60);
-    } else {
-        self.phoneImageView.hidden = YES;
-        self.phoneLabel.hidden = YES;
-        self.phoneTitle.hidden = YES;
-        self.saveButton.hidden = NO;
-        
-        self.saveButton.frame = CGRectMake(60, self.lineView.bottom + 12, SCREEN_WIDTH - 120, 44);
-    }
-}
-
-- (void)addEventTouchUpInsideHandler:(void (^)(void))handler {
-    self.eventTouchUpInsideHandler = handler;
+    _amountLabel.text = [NSString stringWithFormat:@"- $ %.2f",5.0];
+    CGSize amountSize = [_amountLabel.text sizeMakeWithFont:_amountLabel.font];
+    _amountLabel.frame = CGRectMake(SCREEN_WIDTH - amountSize.width - 20, _avatarImageView.top + 10, amountSize.width, amountSize.height);
 }
 
 + (instancetype)cellWithTableView:(UITableView *)tableView {
-    static NSString *ID = @"ECAddressPhoneCell";
-    ECAddressPhoneCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    static NSString *ID = @"ECBalanceCell";
+    ECBalanceCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
-        cell = [[ECAddressPhoneCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[ECBalanceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     cell.selectionStyle = UITableViewCellAccessoryNone;
     return cell;

@@ -7,6 +7,7 @@
 //
 
 #import "ECService.h"
+#import "FCUUID.h"
 
 @implementation ECService
 
@@ -28,5 +29,39 @@
         success((ECUserInfoModel *)responseObj);
     } failure:failure];
 }
+
++ (void)getAccountWithSuccess:(void (^)(ECUserAccountModel *responseObj))success
+                      failure:(void (^)(NSString *errorMsg))failure {
+    NSDictionary *param = @{
+                            @"userType":@"2"
+                            };
+    [ECHttpRequest getWithURLString:api_home_account param:param resultClass:[ECUserAccountModel class] success:^(id responseObj) {
+        success((ECUserAccountModel *)responseObj);
+    } failure:failure];
+}
+
++ (void)submitWithdrawWithPaySecret:(NSString *)paySecret
+                   foundingSourceId:(NSString *)foundingSourceId
+                            success:(void (^)(id responseObj))success
+                     paySecretBlock:(void (^)(void))paySecretBlock
+                            failure:(void (^)(NSString *errorMsg))failure {
+    NSDictionary *param = @{
+                            @"paySecret":paySecret.length > 0 ? paySecret:@"",
+                            @"foundingSourceId" : foundingSourceId,
+                            @"transactionNo":[FCUUID uuidForDevice]
+                            };
+    [ECHttpRequest postWithURLString:api_home_withdraw param:param isContentTypeJson:YES success:^(id responseObj) {
+        if ([responseObj[@"code"] integerValue] == 200) {
+            success(nil);
+        } else if ([responseObj[@"code"] integerValue] == 401){
+            paySecretBlock(); // 401-需要支付码或支付码错误
+        } else {
+            failure(responseObj[@"msg"]);
+        }
+    } failure:^(NSError *error) {
+        failure(@"系统繁忙，请稍后再试");
+    }];
+}
+
 
 @end

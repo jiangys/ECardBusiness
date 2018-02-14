@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ECBalanceModel : NSObject
+@interface ECBalanceBillModel : NSObject
 
 /** 账户类型    number    1-balance 2-cashback */
 @property (nonatomic, copy) NSString *accountType;

@@ -9,9 +9,12 @@
 #import "ECBalanceViewController.h"
 #import "UINavigationBar+Transparent.h"
 #import "ECFooterButtonView.h"
+#import "ECWithdrawViewController.h"
 
 @interface ECBalanceViewController ()
-
+@property (nonatomic, strong) UILabel *AmountLabel;
+@property (nonatomic, strong) UILabel *AmountTypeLabel;
+@property (nonatomic, strong) ECUserAccountModel *accountModel;
 @end
 
 @implementation ECBalanceViewController
@@ -39,6 +42,7 @@
     
     [self setupUI];
     [self setupFooterView];
+    [self getAccountBalance];
 }
 
 - (void)setupUI {
@@ -48,26 +52,47 @@
     logoImgView.centerX = self.view.centerX;
     [self.view addSubview:logoImgView];
     
-    NSString *amount = [NSString stringWithFormat:@"$ %.2f",100.00];
+    NSString *amount = [NSString stringWithFormat:@"$ %.2f",0.0];
     UILabel *AmountLabel = [UILabel initWithFrame:CGRectMake(0, logoImgView.bottom + 20, SCREEN_WIDTH - 60, 75) text:amount font:[UIFont boldSystemFontOfSize:48] color:UIColorFromHex(0xffffff)];
     [AmountLabel setFont:[UIFont systemFontOfSize:34] fromIndex:0 toIndex:1];
     AmountLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:AmountLabel];
+    self.AmountLabel = AmountLabel;
     
     CGSize amountSize = [amount sizeMakeWithFont:[UIFont boldSystemFontOfSize:48]];
     CGFloat left = (SCREEN_WIDTH - 60 + amountSize.width) * 0.5;
     UILabel *AmountTypeLabel = [UILabel initWithFrame:CGRectMake(left, logoImgView.bottom + 30, 40, 20) text:@"USD" font:[UIFont systemFontOfSize:15] color:UIColorFromHex(0xffffff)];
     [self.view addSubview:AmountTypeLabel];
+    self.AmountTypeLabel = AmountTypeLabel;
 }
 
 - (void)setupFooterView {
     ECFooterButtonView *footerButtonView = [[ECFooterButtonView alloc] initWithTop:SCREEN_HEIGHT - 49];
     [footerButtonView setFooterButtonTitle:@"提现"];
     [self.view addSubview:footerButtonView];
-    //@weakify(self);
+    @weakify(self);
     [footerButtonView addEventTouchUpInsideHandler:^{
-        //@strongify(self);
-        [MBProgressHUD showToast:@"暂不支持该功能"];
+        @strongify(self);
+        ECWithdrawViewController *withdrawVC = [[ECWithdrawViewController alloc] init];
+        withdrawVC.balance = self.accountModel.userAccount.balanceAvailable;
+        [self.navigationController pushViewController:withdrawVC animated:YES];
+    }];
+}
+
+- (void)getAccountBalance {
+    @weakify(self);
+    [MBProgressHUD showMessage:@"loading"];
+    [ECService getAccountWithSuccess:^(ECUserAccountModel *responseObj) {
+        @strongify(self);
+        [MBProgressHUD hideHUD];
+        self.accountModel = responseObj;
+        NSString *amount = [NSString stringWithFormat:@"$ %.2f",[responseObj.userAccount.balanceAvailable floatValue]];
+        CGSize amountSize = [amount sizeMakeWithFont:[UIFont boldSystemFontOfSize:48]];
+        self.AmountLabel.text = amount;
+        self.AmountTypeLabel.left = (SCREEN_WIDTH - 60 + amountSize.width) * 0.5;
+    } failure:^(NSString *errorMsg) {
+        [MBProgressHUD hideHUD];
+        [MBProgressHUD showToast:errorMsg];
     }];
 }
 
