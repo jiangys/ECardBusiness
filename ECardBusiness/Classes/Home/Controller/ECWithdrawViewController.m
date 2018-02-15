@@ -108,7 +108,7 @@
  */
 - (void)setupFooterView {
     ECFooterButtonView *footerView = [[ECFooterButtonView alloc] initWithTop:SCREEN_HEIGHT - 49];
-    [footerView setFooterButtonTitle:@"提现$20"];
+    [footerView setFooterButtonTitle:[NSString stringWithFormat:@"提现$%.2f", self.balance.length > 0? [self.balance floatValue] : 0.00]];
     [self.view addSubview:footerView];
     [footerView addEventTouchUpInsideHandler:^{
         [UIAlertView bk_showAlertViewWithTitle:@"" message:@"确定要提现？" cancelButtonTitle:@"确定" otherButtonTitles:@[@"取消"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {

@@ -121,7 +121,7 @@
     _nameLabel.font = [UIFont systemFontOfSize:18];
     _nameLabel.textColor = [UIColor whiteColor];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
-    _nameLabel.text = [ECConfigModel defaultModel].userModel.firstName;
+    _nameLabel.text = [ECConfigModel defaultModel].userModel.cnName;
     [self.tableView addSubview:_nameLabel];
     
     self.tableView.contentInset = UIEdgeInsetsMake(kSettingHeadImageHeight, 0, 0, 0);

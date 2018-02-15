@@ -11,22 +11,6 @@
 
 @implementation ECOpeningModel
 
-//+ (NSDictionary *)objectClassInArray
-//{
-//    return @{
-//             @"openDayList"   : [ECOpeningTimeList class],
-//             };
-//
-//}
-
-//+ (void)load {
-//    [ECOpeningModel mj_setupObjectClassInArray:^NSDictionary *{
-//        return @{
-//                 @"openDayList" : @"ECOpeningTimeList"
-//                 };
-//    }];
-//}
-
 - (BOOL)hasOpenTime {
     if (self.openDayList.mon || self.openDayList.tue || self.openDayList.wen
         || self.openDayList.thu

@@ -12,6 +12,7 @@
 #import "ECAddressReqModel.h"
 #import "ECSettingService.h"
 #import "ECLoginService.h"
+#import "ECGeocoderTool.h"
 
 @interface ECAddressEditViewController ()
 /** 城市 */
@@ -110,9 +111,19 @@
     addressModel.stateId = @(self.selectedStateIndex).stringValue;
     addressModel.stateName = _provinceTextField.text;
     addressModel.zipCode = _zipCodeTextField.text;
-    addressModel.lat = @"34.0806687";
-    addressModel.lng = @"-118.0778257";
     addressModel.cityName = _cityTextField.text;
+    
+    //address1[address2],cityname,statename  这个是地址格式
+    NSString *addressFull = [NSString stringWithFormat:@"%@,%@,%@,%@",addressModel.address1,addressModel.address2,addressModel.cityName,addressModel.stateName];
+    [ECGeocoderTool getPlacemark:addressFull block:^(CLLocationCoordinate2D coordinate) {
+        if (coordinate.latitude == 0 && coordinate.longitude == 0) {
+            [MBProgressHUD showToast:@"请输入正确的地址"];
+            return;
+        } else {
+            addressModel.lat = [NSString stringWithFormat:@"%6.f",coordinate.latitude];
+            addressModel.lng = [NSString stringWithFormat:@"%6.f",coordinate.longitude];
+        }
+    }];
     
     [MBProgressHUD showMessage:@"loading"];
     [ECSettingService addressSaveWithParam:addressModel success:^(ECAddressModel *model) {

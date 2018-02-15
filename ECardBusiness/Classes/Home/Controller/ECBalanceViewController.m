@@ -89,6 +89,7 @@
         NSString *amount = [NSString stringWithFormat:@"$ %.2f",[responseObj.userAccount.balanceAvailable floatValue]];
         CGSize amountSize = [amount sizeMakeWithFont:[UIFont boldSystemFontOfSize:48]];
         self.AmountLabel.text = amount;
+        [self.AmountLabel setFont:[UIFont systemFontOfSize:34] fromIndex:0 toIndex:1];
         self.AmountTypeLabel.left = (SCREEN_WIDTH - 60 + amountSize.width) * 0.5;
     } failure:^(NSString *errorMsg) {
         [MBProgressHUD hideHUD];

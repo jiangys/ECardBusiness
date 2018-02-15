@@ -16,6 +16,7 @@
 #import "ECWebViewController.h"
 #import "ECLoginService.h"
 #import "ECRegisterTool.h"
+#import "ECGeocoderTool.h"
 
 @interface ECRegisterNextViewController ()
 /** 用户填写的注册信息 */
@@ -35,18 +36,12 @@
 @property (nonatomic, strong) ECOfficeHoursModel *officeHoursModel;
 @property (nonatomic, strong) UIImageView *goldenImageView;
 @property (nonatomic, strong) UIImageView *roseGoldImageView;
-///** 选填营业时间（内容参考officeHours这个对象,嘿嘿） */
-//@property (nonatomic, copy) NSString *optionalOfficeHours1;
-///** 选填营业时间 */
-//@property (nonatomic, copy) NSString *optionalOfficeHours2;
 ///** 该用户在dwolla上的对应账户 */
 //@property (nonatomic, copy) NSString *dowllaCustomerId;
 ///** 邀请码 */
 //@property (nonatomic, copy) NSString *invitationCode;
 ///** 营业执照图片链接 */
 //@property (nonatomic, copy) NSString *licenceUrl;
-///** 用户类型（1:客户 2:商家） */
-//@property (nonatomic, copy) NSString *type;
 @end
 
 @implementation ECRegisterNextViewController
@@ -248,8 +243,17 @@
     self.registerModel.officeHours = officeHoursModel;
     self.registerModel.type = @"2"; //用户类型
     self.registerModel.licenceUrl = @"https://avarta.s3.us-west-2.amazonaws.com/22459100-c206-41c7-ac0f-980d2892afe2";
-    self.registerModel.lat = @"34.0806687";
-    self.registerModel.lng = @"-118.0778257";
+    //address1[address2],cityname,statename  这个是地址格式
+    NSString *addressFull = [NSString stringWithFormat:@"%@,%@,%@,%@",self.registerModel.address1,self.registerModel.address2,self.registerModel.city,self.registerModel.province];
+    [ECGeocoderTool getPlacemark:addressFull block:^(CLLocationCoordinate2D coordinate) {
+        if (coordinate.latitude == 0 && coordinate.longitude == 0) {
+            [MBProgressHUD showToast:@"请输入正确的地址"];
+            return;
+        } else {
+            self.registerModel.lat = [NSString stringWithFormat:@"%6.f",coordinate.latitude];
+            self.registerModel.lng = [NSString stringWithFormat:@"%6.f",coordinate.longitude];
+        }
+    }];
     
     [ECRegisterTool saveRegisterModel:self.registerModel];
     [MBProgressHUD showMessage:@"注册中，请稍后"];

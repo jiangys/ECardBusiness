@@ -8,11 +8,13 @@
 
 #pragma mark - 常量定义
 static NSString *const ECMacro_Api = @"http://34.236.73.23";
+static NSString *const web_add_bandcard = @"http://34.236.73.23/dl/dwolla_iav.html?t="; //打开增加银行卡页面
 //static NSString *const ECMacro_Api = @"http://api.ecard";
-static NSString *const web_add_bandcard = @"http://dwolla.ecard/dwolla_iav.html?t="; //打开增加银行卡页面
+//static NSString *const web_add_bandcard = @"http://dwolla.ecard/dwolla_iav.html?t="; //打开增加银行卡页面
 
 static NSString *const api_home_account = @"/userOperation/getUserAccount.do"; // 获取用户账户信息
 static NSString *const api_home_withdraw = @"/userOperation/submitWithdraw.do"; //账户余额提现银行卡
+static NSString *const api_home_queryJournalList = @"/userOperation/queryJournalList2"; //获取账目明细列表
 
 static NSString *const api_login = @"/merchantAuth/merchantLoginByEmailWithPassword.do"; // 邮箱+密码登录
 static NSString *const api_login_Code = @"/merchantAuth/merchantLoginByEmailWithCode.do"; // 邮箱+验证码登录

@@ -46,9 +46,15 @@
 		8EB0C702203325B20035F8EF /* ECWithdrawCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C701203325B20035F8EF /* ECWithdrawCardCell.m */; };
 		8EB0C708203402740035F8EF /* ECUserAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C707203402740035F8EF /* ECUserAccountModel.m */; };
 		8EB0C70E203403550035F8EF /* ECCashModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C70D203403550035F8EF /* ECCashModel.m */; };
+		8EB0C712203423380035F8EF /* ECHomeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C711203423380035F8EF /* ECHomeService.m */; };
+		8EB0C715203425BF0035F8EF /* ECBalancePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C714203425BF0035F8EF /* ECBalancePageModel.m */; };
+		8EB0C71F203439140035F8EF /* ECBalanceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C71E203439140035F8EF /* ECBalanceListViewController.m */; };
+		8EB0C72D203445730035F8EF /* LSPTitleStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C725203445730035F8EF /* LSPTitleStyle.m */; };
+		8EB0C72E203445730035F8EF /* LSPPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C726203445730035F8EF /* LSPPageView.m */; };
+		8EB0C72F203445730035F8EF /* LSPContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C727203445730035F8EF /* LSPContentView.m */; };
+		8EB0C730203445730035F8EF /* LSPTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C728203445730035F8EF /* LSPTitleView.m */; };
+		8EB0C73320345C690035F8EF /* ECGeocoderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0C73220345C690035F8EF /* ECGeocoderTool.m */; };
 		8ECC929C20303DD4004F7AFC /* YSCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC929B20303DD3004F7AFC /* YSCryptor.m */; };
-		8ECC929F20304FBB004F7AFC /* ECBalanceDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC929E20304FBB004F7AFC /* ECBalanceDealViewController.m */; };
-		8ECC92A22030501D004F7AFC /* ECBalanceFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC92A12030501D004F7AFC /* ECBalanceFinishViewController.m */; };
 		8ECC92A520305058004F7AFC /* ECBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC92A420305058004F7AFC /* ECBalanceCell.m */; };
 		8ECC92A820305EFA004F7AFC /* ECBalanceBillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECC92A720305EFA004F7AFC /* ECBalanceBillModel.m */; };
 		8EDE83D1201B8E4200E16817 /* UINavigationBar+Transparent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE83CF201B8E4200E16817 /* UINavigationBar+Transparent.m */; };
@@ -182,12 +188,24 @@
 		8EB0C707203402740035F8EF /* ECUserAccountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECUserAccountModel.m; sourceTree = "<group>"; };
 		8EB0C70C203403550035F8EF /* ECCashModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECCashModel.h; sourceTree = "<group>"; };
 		8EB0C70D203403550035F8EF /* ECCashModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECCashModel.m; sourceTree = "<group>"; };
+		8EB0C710203423380035F8EF /* ECHomeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECHomeService.h; sourceTree = "<group>"; };
+		8EB0C711203423380035F8EF /* ECHomeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECHomeService.m; sourceTree = "<group>"; };
+		8EB0C713203425BF0035F8EF /* ECBalancePageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalancePageModel.h; sourceTree = "<group>"; };
+		8EB0C714203425BF0035F8EF /* ECBalancePageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalancePageModel.m; sourceTree = "<group>"; };
+		8EB0C71D203439140035F8EF /* ECBalanceListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceListViewController.h; sourceTree = "<group>"; };
+		8EB0C71E203439140035F8EF /* ECBalanceListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceListViewController.m; sourceTree = "<group>"; };
+		8EB0C725203445730035F8EF /* LSPTitleStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSPTitleStyle.m; sourceTree = "<group>"; };
+		8EB0C726203445730035F8EF /* LSPPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSPPageView.m; sourceTree = "<group>"; };
+		8EB0C727203445730035F8EF /* LSPContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSPContentView.m; sourceTree = "<group>"; };
+		8EB0C728203445730035F8EF /* LSPTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSPTitleView.m; sourceTree = "<group>"; };
+		8EB0C729203445730035F8EF /* LSPContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSPContentView.h; sourceTree = "<group>"; };
+		8EB0C72A203445730035F8EF /* LSPPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSPPageView.h; sourceTree = "<group>"; };
+		8EB0C72B203445730035F8EF /* LSPTitleStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSPTitleStyle.h; sourceTree = "<group>"; };
+		8EB0C72C203445730035F8EF /* LSPTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSPTitleView.h; sourceTree = "<group>"; };
+		8EB0C73120345C690035F8EF /* ECGeocoderTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECGeocoderTool.h; sourceTree = "<group>"; };
+		8EB0C73220345C690035F8EF /* ECGeocoderTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECGeocoderTool.m; sourceTree = "<group>"; };
 		8ECC929A20303DD3004F7AFC /* YSCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCryptor.h; sourceTree = "<group>"; };
 		8ECC929B20303DD3004F7AFC /* YSCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCryptor.m; sourceTree = "<group>"; };
-		8ECC929D20304FBB004F7AFC /* ECBalanceDealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceDealViewController.h; sourceTree = "<group>"; };
-		8ECC929E20304FBB004F7AFC /* ECBalanceDealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceDealViewController.m; sourceTree = "<group>"; };
-		8ECC92A02030501D004F7AFC /* ECBalanceFinishViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceFinishViewController.h; sourceTree = "<group>"; };
-		8ECC92A12030501D004F7AFC /* ECBalanceFinishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceFinishViewController.m; sourceTree = "<group>"; };
 		8ECC92A320305058004F7AFC /* ECBalanceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceCell.h; sourceTree = "<group>"; };
 		8ECC92A420305058004F7AFC /* ECBalanceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECBalanceCell.m; sourceTree = "<group>"; };
 		8ECC92A620305EFA004F7AFC /* ECBalanceBillModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECBalanceBillModel.h; sourceTree = "<group>"; };
@@ -442,6 +460,30 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		8EB0C70F203423170035F8EF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8EB0C710203423380035F8EF /* ECHomeService.h */,
+				8EB0C711203423380035F8EF /* ECHomeService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		8EB0C724203445730035F8EF /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				8EB0C72B203445730035F8EF /* LSPTitleStyle.h */,
+				8EB0C725203445730035F8EF /* LSPTitleStyle.m */,
+				8EB0C72A203445730035F8EF /* LSPPageView.h */,
+				8EB0C726203445730035F8EF /* LSPPageView.m */,
+				8EB0C729203445730035F8EF /* LSPContentView.h */,
+				8EB0C727203445730035F8EF /* LSPContentView.m */,
+				8EB0C72C203445730035F8EF /* LSPTitleView.h */,
+				8EB0C728203445730035F8EF /* LSPTitleView.m */,
+			);
+			path = PageView;
+			sourceTree = "<group>";
+		};
 		8EE6F99020293C1D009F385A /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +573,7 @@
 		F60BD64B200C583100050F3A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				8EB0C70F203423170035F8EF /* Service */,
 				F60BD64C200C583100050F3A /* Controller */,
 				F60BD64F200C583100050F3A /* Model */,
 				F60BD650200C583100050F3A /* View */,
@@ -549,14 +592,12 @@
 				8E5C4BBA2020C69E003EB5ED /* ECCashDeskViewController.m */,
 				8EFA6AD3202206D1007454BF /* ECBalanceViewController.h */,
 				8EFA6AD4202206D1007454BF /* ECBalanceViewController.m */,
-				8EAE816F202DFF6C00D06854 /* ECBalanceDetailViewController.h */,
-				8EAE8170202DFF6C00D06854 /* ECBalanceDetailViewController.m */,
-				8ECC929D20304FBB004F7AFC /* ECBalanceDealViewController.h */,
-				8ECC929E20304FBB004F7AFC /* ECBalanceDealViewController.m */,
-				8ECC92A02030501D004F7AFC /* ECBalanceFinishViewController.h */,
-				8ECC92A12030501D004F7AFC /* ECBalanceFinishViewController.m */,
 				8EB0C6FD203300100035F8EF /* ECWithdrawViewController.h */,
 				8EB0C6FE203300100035F8EF /* ECWithdrawViewController.m */,
+				8EB0C71D203439140035F8EF /* ECBalanceListViewController.h */,
+				8EB0C71E203439140035F8EF /* ECBalanceListViewController.m */,
+				8EAE816F202DFF6C00D06854 /* ECBalanceDetailViewController.h */,
+				8EAE8170202DFF6C00D06854 /* ECBalanceDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -564,6 +605,8 @@
 		F60BD64F200C583100050F3A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8EB0C713203425BF0035F8EF /* ECBalancePageModel.h */,
+				8EB0C714203425BF0035F8EF /* ECBalancePageModel.m */,
 				8ECC92A620305EFA004F7AFC /* ECBalanceBillModel.h */,
 				8ECC92A720305EFA004F7AFC /* ECBalanceBillModel.m */,
 				8EB0C706203402740035F8EF /* ECUserAccountModel.h */,
@@ -680,6 +723,8 @@
 			children = (
 				F610A84020161B190017A77C /* ECRegisterTool.h */,
 				F610A84120161B190017A77C /* ECRegisterTool.m */,
+				8EB0C73120345C690035F8EF /* ECGeocoderTool.h */,
+				8EB0C73220345C690035F8EF /* ECGeocoderTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -721,6 +766,7 @@
 		F64876362012E73300BD653C /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				8EB0C724203445730035F8EF /* PageView */,
 				8E7D95D2202890A80067A3FC /* MBProgressHUD */,
 				8E3531E4201C5FFB005622C2 /* YSMine */,
 				F6A588B820142B5A00BE7EA8 /* BRPickerView */,
@@ -976,11 +1022,11 @@
 				F6A588CE20142B5A00BE7EA8 /* BRStringPickerView.m in Sources */,
 				8EFA6AE12022A641007454BF /* ECRegisterNextViewController.m in Sources */,
 				8E3531FF201C5FFB005622C2 /* YSMineViewController.m in Sources */,
+				8EB0C712203423380035F8EF /* ECHomeService.m in Sources */,
 				8EA9BC32202B5DD700B4801D /* ECOpeningTimeEditViewController.m in Sources */,
 				8ECC92A820305EFA004F7AFC /* ECBalanceBillModel.m in Sources */,
 				F683457620123ED400816A7A /* BRTextField.m in Sources */,
 				F62F3B8A200FAF4600729FAF /* ECRegisterModel.m in Sources */,
-				8ECC929F20304FBB004F7AFC /* ECBalanceDealViewController.m in Sources */,
 				8EFA9C12202CB0F4006500D8 /* ECSafeViewController.m in Sources */,
 				8EFA9C18202CB11E006500D8 /* ECHelpViewController.m in Sources */,
 				8EDE83D1201B8E4200E16817 /* UINavigationBar+Transparent.m in Sources */,
@@ -995,8 +1041,8 @@
 				8ECC92A520305058004F7AFC /* ECBalanceCell.m in Sources */,
 				8E3531FC201C5FFB005622C2 /* YSBadgeView.m in Sources */,
 				F6A588CC20142B5A00BE7EA8 /* BRBaseView.m in Sources */,
-				8ECC92A22030501D004F7AFC /* ECBalanceFinishViewController.m in Sources */,
 				8EFA6AE42022A641007454BF /* ECLoginViewController.m in Sources */,
+				8EB0C72D203445730035F8EF /* LSPTitleStyle.m in Sources */,
 				F64876502012F2D300BD653C /* ECLoginService.m in Sources */,
 				8EA9BC38202BDBF300B4801D /* ECOpeningModel.m in Sources */,
 				8EF40503202A8D1600B6EDE2 /* ECAddressPhoneCell.m in Sources */,
@@ -1012,8 +1058,10 @@
 				F679256720104C0B006512E5 /* ECFooterButtonView.m in Sources */,
 				F6A588D1201450A500BE7EA8 /* ECOfficeHoursModel.m in Sources */,
 				8E3531F8201C5FFB005622C2 /* YSMineCellItemLabel.m in Sources */,
+				8EB0C715203425BF0035F8EF /* ECBalancePageModel.m in Sources */,
 				8E35320C201CC8E3005622C2 /* ECAddressViewController.m in Sources */,
 				F6A588D32014C0F500BE7EA8 /* Foundation+Log.m in Sources */,
+				8EB0C71F203439140035F8EF /* ECBalanceListViewController.m in Sources */,
 				8ECC929C20303DD4004F7AFC /* YSCryptor.m in Sources */,
 				8EF404FD2029FD5300B6EDE2 /* ECAddressModel.m in Sources */,
 				8EFA6AE22022A641007454BF /* ECBindCardViewController.m in Sources */,
@@ -1025,12 +1073,16 @@
 				F60BD669200C583100050F3A /* UIBarButtonItem+Extension.m in Sources */,
 				8E3531D7201C3B4B005622C2 /* ECHomeViewController.m in Sources */,
 				F68345732011814900816A7A /* ECNavigationController.m in Sources */,
+				8EB0C73320345C690035F8EF /* ECGeocoderTool.m in Sources */,
+				8EB0C730203445730035F8EF /* LSPTitleView.m in Sources */,
+				8EB0C72E203445730035F8EF /* LSPPageView.m in Sources */,
 				8EAE8171202DFF6C00D06854 /* ECBalanceDetailViewController.m in Sources */,
 				F648764B2012EDB700BD653C /* ECWebViewController.m in Sources */,
 				F62F3B8D200FB22400729FAF /* YSTextField.m in Sources */,
 				8EF40500202A8C7F00B6EDE2 /* ECPhoneViewController.m in Sources */,
 				8E353200201C5FFB005622C2 /* YSMineCellItemArrow.m in Sources */,
 				8EFA6AE52022A641007454BF /* ECForgetPwdViewController.m in Sources */,
+				8EB0C72F203445730035F8EF /* LSPContentView.m in Sources */,
 				8EAE8174202E8A7400D06854 /* ECOpenTimeUpdateModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

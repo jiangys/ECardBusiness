@@ -9,26 +9,30 @@
 #import "ECBalanceDetailViewController.h"
 #import "ECBalanceCell.h"
 #import "ECSettingService.h"
+#import "ECHomeService.h"
 
 @interface ECBalanceDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSMutableArray *balanceArray;
 @property (nonatomic, strong) UIButton *dealButton;
 @property (nonatomic, strong) UIButton *finishButton;
+@property (nonatomic, copy) NSString *orderStatus; //* 0-所有 1-正在处理 2-已完成 */
 @end
 
 @implementation ECBalanceDetailViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tableView.mj_header beginRefreshing];
+- (NSMutableArray *)balanceArray {
+    if (!_balanceArray) {
+        self.balanceArray = [NSMutableArray array];
+    }
+    return _balanceArray;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"账户明细";
     self.view.backgroundColor = UIColorMain_Bg;
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImage:@"home_date_select" hightlightedImage:@"home_date_select" target:self selector:@selector(conditionClick)];
+    self.orderStatus = @"1";
     
     [self setupTopView];
     [self setupTableView];
@@ -38,7 +42,7 @@
 }
 
 - (void)setupTopView {
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 49)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49)];
     bgView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bgView];
     
@@ -58,7 +62,7 @@
 }
 
 - (void)setupTableView {
-    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 50, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 50) style:UITableViewStylePlain];
+    _tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, SCREEN_HEIGHT - 50 - 64 - 45) style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.tableHeaderView = [self setupHeaderView];
@@ -66,9 +70,6 @@
     _tableView.backgroundColor = UIColorMain_Bg;
     [self.view addSubview:_tableView];
     
-    self.tableView.estimatedRowHeight = 0;
-    self.tableView.estimatedSectionHeaderHeight = 0;
-    self.tableView.estimatedSectionFooterHeight = 0;
     if (@available(iOS 11.0, *)) {
         _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
@@ -76,22 +77,45 @@
     }
     
     // 下拉刷新
-        _tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            @weakify(self);
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                @strongify(self);
-                 [self.tableView.mj_header endRefreshing];
-            });
-//            [ECSettingService addressListWithSuccess:^(NSMutableArray *addressArray) {
-//                @strongify(self);
-//                self.addressArray = addressArray;
-//                [self.tableView reloadData];
-//                [self.tableView.mj_header endRefreshing];
-//            } failure:^(NSString *errorMsg) {
-//                [MBProgressHUD showToast:errorMsg];
-//                [self.tableView.mj_header endRefreshing];
-//            }];
+    @weakify(self);
+    _tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self);
+        //[self loadNewWithOrderStatus:@"0"];
+        [ECHomeService homeQueryJournalListWithType:self.transactionType orderStatus:self.orderStatus maxId:@"" beginDate:@"" endDate:@"" success:^(ECBalancePageModel *balancePageModel) {
+            @strongify(self);
+            [self.balanceArray removeAllObjects];
+            [self.balanceArray addObjectsFromArray:balancePageModel.list];
+            [self.tableView reloadData];
+            [self.tableView.mj_header endRefreshing];
+            if (balancePageModel.list.count < 10) { //每页10条
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            } else {
+                [self.tableView.mj_footer resetNoMoreData];
+            }
+        } failure:^(NSString *errorMsg) {
+            [MBProgressHUD showToast:errorMsg];
+            [self.tableView.mj_header endRefreshing];
         }];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        NSString *maxId = ((ECBalanceBillModel *)self.balanceArray.lastObject).journlId;
+        [ECHomeService homeQueryJournalListWithType:self.transactionType orderStatus:self.orderStatus maxId:maxId beginDate:@"" endDate:@"" success:^(ECBalancePageModel *balancePageModel) {
+            @strongify(self);
+            // 如果没有更多数据，隐藏
+            [self.balanceArray addObjectsFromArray:balancePageModel.list];
+            [self.tableView reloadData];
+            if (balancePageModel.list.count < 10) { //每页10条
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            } else {
+                [self.tableView.mj_footer endRefreshing];
+            }
+        } failure:^(NSString *errorMsg) {
+            [MBProgressHUD showToast:errorMsg];
+            [self.tableView.mj_footer endRefreshing];
+        }];
+    }];
 }
 
 - (UIView *)setupHeaderView {
@@ -113,6 +137,9 @@
         
         self.finishButton.selected = NO;
         self.finishButton.backgroundColor = UIColorMain_Bg;
+        
+        self.orderStatus = @"1";
+        [self.tableView.mj_header beginRefreshing];
     } forControlEvents:UIControlEventTouchUpInside];
     
     _finishButton = [self statusButtonWithFrame:CGRectMake(_dealButton.right + 15, 10, 80, 28) title:@"已完成"];
@@ -124,6 +151,9 @@
         
         self.finishButton.selected = YES;
         self.finishButton.backgroundColor = [UIColor whiteColor];
+        
+        self.orderStatus = @"2";
+        [self.tableView.mj_header beginRefreshing];
     } forControlEvents:UIControlEventTouchUpInside];
     
     return bgView;
@@ -152,21 +182,16 @@
     return 80;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;//self.addressArray.count;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.balanceArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ECBalanceCell *cell = [ECBalanceCell cellWithTableView:tableView];
-    cell.balanceModel = nil;
-    //    if (self.addressArray.count > indexPath.section) {
-    //        ECBalanceModel *balanceModel = self.addressArray[section];
-    //        cell.balanceModel = balanceModel;
-    //    }
+    if (self.balanceArray.count > indexPath.row) {
+        ECBalanceBillModel *balanceModel = self.balanceArray[indexPath.row];
+        cell.balanceModel = balanceModel;
+    }
     return cell;
 }
 
@@ -176,9 +201,5 @@
     
 }
 
-
-- (void)conditionClick {
-    [MBProgressHUD showToast:@"对不起，暂不支持该功能"];
-}
 
 @end

@@ -22,4 +22,6 @@
 @property (nonatomic, copy) NSString *zipCode; //邮编
 @property (nonatomic, copy) NSString *storeId;
 @property (nonatomic, copy) NSString *contact;
+@property (nonatomic, copy) NSString *cnName;
+@property (nonatomic, copy) NSString *enName;
 @end

@@ -17,10 +17,9 @@
 #import "ECNavigationController.h"
 #import "ECService.h"
 #import "ECConfigModel.h"
-#import "ECBalanceDealViewController.h"
-#import "ECBalanceDetailViewController.h"
+#import "ECBalanceListViewController.h"
 
-#define kHomeHeaderViewHeight 360
+#define kHomeHeaderViewHeight 350
 @interface ECHomeViewController ()
 @property(nonatomic, strong) UIImageView *imageView;
 @property(nonatomic, strong) UIView *headerView;
@@ -28,6 +27,7 @@
 @property (nonatomic, strong) UILabel *amountLabel;
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *amountDescLabel;
+@property (nonatomic, strong) UILabel *nameLabel;
 @end
 
 @implementation ECHomeViewController
@@ -84,7 +84,7 @@
     headerBgView.image = [UIImage imageNamed:@"home_rectangle"];
     [headerView addSubview:headerBgView];
     
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 60) * 0.5, 70, 60, 60)];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 60) * 0.5, 80, 60, 60)];
     iconImageView.contentMode = UIViewContentModeScaleToFill;
     iconImageView.layer.masksToBounds = YES;
     iconImageView.layer.cornerRadius = iconImageView.width * 0.5;
@@ -92,15 +92,16 @@
     iconImageView.image = [UIImage imageNamed:@"home_header_default_icon"];
     self.iconImageView = iconImageView;
     
-    UILabel *cashbackLabel = [UILabel initWithFrame:CGRectMake(0, iconImageView.bottom + 15, SCREEN_WIDTH, 15) text:@"Cashback 总额" font:[UIFont systemFontOfSize:13] color:UIColorFromHex(0xd0e8ff)];
-    cashbackLabel.textAlignment = NSTextAlignmentCenter;
-    [headerView addSubview:cashbackLabel];
+    UILabel *nameLabel = [UILabel initWithFrame:CGRectMake(0, iconImageView.bottom + 15, SCREEN_WIDTH, 15) text:@"加载中" font:[UIFont systemFontOfSize:18] color:UIColorFromHex(0xd0e8ff)];
+    nameLabel.textAlignment = NSTextAlignmentCenter;
+    [headerView addSubview:nameLabel];
+    self.nameLabel = nameLabel;
     
-    UILabel *AmountLabel = [UILabel initWithFrame:CGRectMake(0, cashbackLabel.bottom, SCREEN_WIDTH, 42) text:@"$2100.00" font:[UIFont systemFontOfSize:30] color:UIColorFromHex(0xffffff)];
-    AmountLabel.textAlignment = NSTextAlignmentCenter;
-    [headerView addSubview:AmountLabel];
+//    UILabel *AmountLabel = [UILabel initWithFrame:CGRectMake(0, cashbackLabel.bottom, SCREEN_WIDTH, 42) text:@"$2100.00" font:[UIFont systemFontOfSize:30] color:UIColorFromHex(0xffffff)];
+//    AmountLabel.textAlignment = NSTextAlignmentCenter;
+//    [headerView addSubview:AmountLabel];
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, AmountLabel.bottom + 23, SCREEN_WIDTH - 30, 1)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, nameLabel.bottom + 35, SCREEN_WIDTH - 30, 1)];
     lineView.backgroundColor = UIColorFromHex(0xd0e8ff);
     [headerView addSubview:lineView];
     
@@ -115,7 +116,7 @@
     UIView *balanceItemView = [self setupButtonWithPoint:(CGPoint){SCREEN_WIDTH - 60 - 70, lineView.bottom + 25} imageName:@"home_balanceItem" desc:@"账目明细" block:^{
         ECLog(@"账目明细");
         @strongify(self);
-        ECBalanceDetailViewController *balanceVC = [[ECBalanceDetailViewController alloc] init];
+        ECBalanceListViewController *balanceVC = [[ECBalanceListViewController alloc] init];
         [self.navigationController pushViewController:balanceVC animated:YES];
     }];
     [headerView addSubview:balanceItemView];
@@ -208,6 +209,7 @@
         [ECConfigModel defaultModel].userModel = userModel;
         [MBProgressHUD hideHUD];
         [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[ECConfigModel defaultModel].userModel.avatarUrl] placeholderImage:[UIImage imageNamed:@"home_header_default_icon"]];
+        self.nameLabel.text = userModel.cnName;
     } failure:^(NSString *errorMsg) {
         [MBProgressHUD hideHUD];
         [MBProgressHUD showToast:errorMsg];

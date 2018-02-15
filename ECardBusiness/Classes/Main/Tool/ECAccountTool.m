@@ -53,6 +53,7 @@
 + (void)signOut {
     // 清空用户信息
     [self saveAccount:[ECAccountModel new]];
+    [ECConfigModel defaultModel].userModel = nil;;
 }
 
 @end
